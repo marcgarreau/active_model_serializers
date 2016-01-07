@@ -80,6 +80,33 @@ end
 
 ActiveModelSerializers will use `PostSerializer::CommentSerializer` (thus including only the `:body_short` attribute) when serializing a `Comment` as part of a `Post`, but use `::CommentSerializer` when serializing a `Comment` directly (thus including `:body, :date, :nb_likes`).
 
+### Polymorphic Relationships
+
+Polymorphic relationships can be declared in a serializer with the `polymorphic: true` parameter:
+
+```ruby
+class PictureSerializer < ActiveModel::Serializer
+  has_one :imageable, polymorphic: true
+end
+```
+
+In this example, if the picture belongs to a product, the serializer will default to the `ProductSerializer`. A `PictureSerializer` payload might look like this:
+
+```javascript
+{
+  picture: {
+    id: 1,
+    imageable: {
+      type: "product",
+      product: {
+        id: 3,
+        title: "Product 3"
+      }
+    }
+  }
+}
+```
+
 ## Rails Integration
 
 ActiveModelSerializers will automatically integrate with your Rails app,
