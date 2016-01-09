@@ -82,7 +82,29 @@ ActiveModelSerializers will use `PostSerializer::CommentSerializer` (thus includ
 
 ### Polymorphic Relationships
 
-Polymorphic relationships can be declared in a serializer with the `polymorphic: true` parameter:
+As of release `0.10`, polymorphic relationships are serialized just by specifying the relationship. For example:
+
+```ruby
+class PictureSerializer < ActiveModel::Serializer
+  has_one :imageable
+end
+```
+
+If the instance of `Picture` belongs to a `Product`, an example payload might be:
+
+```javascript
+{
+  picture: {
+    id: 1,
+    imageable: {
+      id: 3,
+      title: "Product 3"
+    }
+  }
+}
+```
+
+In prior releases (and optionally in `0.10`), a `polymorphic: true` parameter is required:
 
 ```ruby
 class PictureSerializer < ActiveModel::Serializer
@@ -90,7 +112,7 @@ class PictureSerializer < ActiveModel::Serializer
 end
 ```
 
-In this example, if the picture belongs to a product, the serializer will default to the `ProductSerializer`. A `PictureSerializer` payload might look like this:
+In this case, an example payload might be:
 
 ```javascript
 {
