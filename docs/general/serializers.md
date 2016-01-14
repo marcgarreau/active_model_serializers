@@ -76,7 +76,7 @@ end
 
 ### Polymorphic Relationships
 
-As of release `0.10`, polymorphic relationships are serialized just by specifying the relationship. For example:
+Polymorphic relationships are serialized just by specifying the relationship. For example:
 
 ```ruby
 class PictureSerializer < ActiveModel::Serializer
@@ -93,31 +93,6 @@ If the instance of `Picture` belongs to a `Product`, an example payload might be
     imageable: {
       id: 3,
       title: "Product 3"
-    }
-  }
-}
-```
-
-In prior releases (and optionally in `0.10`), a `polymorphic: true` parameter is required:
-
-```ruby
-class PictureSerializer < ActiveModel::Serializer
-  has_one :imageable, polymorphic: true
-end
-```
-
-In this case, an example payload might be:
-
-```javascript
-{
-  picture: {
-    id: 1,
-    imageable: {
-      type: "product",
-      product: {
-        id: 3,
-        title: "Product 3"
-      }
     }
   }
 }
