@@ -5,7 +5,7 @@ module ActiveModel
     module Adapter
       class Json
         class PolymorphicTest < ActiveSupport::TestCase
-          def setup
+          setup do
             @employee = Employee.new(id: 42, name: 'Zoop Zoopler', email: 'zoop@example.com')
             @picture = @employee.pictures.new(id: 1, title: 'headshot-1.jpg')
             @picture.imageable = @employee
