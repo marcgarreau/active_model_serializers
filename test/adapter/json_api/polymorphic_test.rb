@@ -3,18 +3,20 @@ require 'test_helper'
 module ActiveModel
   class Serializer
     module Adapter
-      class Json
+      class JsonApi
         class PolymorphicTest < ActiveSupport::TestCase
           setup do
             @employee = Employee.new(id: 42, name: 'Zoop Zoopler', email: 'zoop@example.com')
             @picture = @employee.pictures.new(id: 1, title: 'headshot-1.jpg')
             @picture.imageable = @employee
 
-            @serialization = serializable(@picture, adapter: :json)
+            @serialization = serializable(@picture, adapter: :json_api)
           end
 
           def test_polymorphic_serializer
-            assert_equal({ id: 42, name: 'Zoop Zoopler' }, @serialization.as_json[:picture][:imageable])
+            expected = { data: { id: '42', type: 'employees' } }
+
+            assert_equal(expected, @serialization.as_json[:data][:relationships][:imageable])
           end
         end
       end
