@@ -76,26 +76,12 @@ end
 
 ### Polymorphic Relationships
 
-Polymorphic relationships are serialized just by specifying the relationship. For example:
+Polymorphic relationships are serialized by specifying the relationship, like any other association. For example:
 
 ```ruby
 class PictureSerializer < ActiveModel::Serializer
   has_one :imageable
 end
-```
-
-If the instance of `Picture` belongs to a `Product`, an example payload might be:
-
-```javascript
-{
-  picture: {
-    id: 1,
-    imageable: {
-      id: 3,
-      title: "Product 3"
-    }
-  }
-}
 ```
 
 ### Caching
