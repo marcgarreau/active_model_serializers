@@ -84,7 +84,7 @@ class PictureSerializer < ActiveModel::Serializer
 end
 ```
 
-For more context, see the tests for each adapter: [attributes](https://github.com/rails-api/active_model_serializers/blob/master/test/adapter/attributes/polymorphic_test.rb), [json_api](https://github.com/rails-api/active_model_serializers/blob/master/test/adapter/json_api/polymorphic_test.rb), [json](https://github.com/rails-api/active_model_serializers/blob/master/test/adapter/json/polymorphic_test.rb)
+For more context, see the [tests](../../test/adapter/polymorphic_test.rb) for each adapter.
 
 ### Caching
 
