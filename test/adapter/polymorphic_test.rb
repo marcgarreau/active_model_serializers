@@ -19,7 +19,7 @@ module ActiveModel
             {
               id: 1,
               title: 'headshot-1.jpg',
-              imageable: {
+              employee: {
                 id: 42,
                 name: 'Zoop Zoopler'
               }
@@ -34,7 +34,7 @@ module ActiveModel
               picture: {
                 id: 1,
                 title: 'headshot-1.jpg',
-                imageable: {
+                employee: {
                   id: 42,
                   name: 'Zoop Zoopler'
                 }
@@ -54,7 +54,7 @@ module ActiveModel
                   title: 'headshot-1.jpg'
                 },
                 relationships: {
-                  imageable: {
+                  employee: {
                     data: {
                       id: '42',
                       type: 'employees'

@@ -237,7 +237,7 @@ end
 PictureSerializer = Class.new(ActiveModel::Serializer) do
   attributes :id, :title
 
-  has_one :imageable
+  belongs_to :imageable, polymorphic: true
 end
 
 Spam::UnrelatedLinkSerializer = Class.new(ActiveModel::Serializer) do
